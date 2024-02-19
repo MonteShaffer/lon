@@ -1,0 +1,602 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<script type="text/javascript" src="./../../../libs/turnjs4/extras/jquery.min.1.7.js"></script>
+<!--<script type="text/javascript" src="../../extras/jquery-ui-1.8.20.custom.min.js"></script>//-->
+<script type="text/javascript" src="./../../../libs/jquery-ui-1.12.1.blitzer/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="./../../../libs/jquery-ui-1.12.1.blitzer/jquery-ui.min.css">
+
+
+<script type="text/javascript" src="./../../../libs/turnjs4/extras/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="./../../../libs/turnjs4/extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="./../../../libs/turnjs4/lib/hash.js"></script>
+
+
+
+<link rel="shortcut icon" href="./../../../assets/favicon/favicon.ico" type="image/x-icon">
+<link rel="icon" href="./../../../assets/favicon/favicon.ico" type="image/x-icon">
+
+
+<link rel="apple-touch-icon" sizes="57x57" href="./../../../assets/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="./../../../assets/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="./../../../assets/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="./../../../assets/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="./../../../assets/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="./../../../assets/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="./../../../assets/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="./../../../assets/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./../../../assets/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="./../../../assets/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./../../../assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="./../../../assets/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./../../../assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="./../../../assets/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="./../../../assets/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<!--<meta name="viewport" content="height=device-height, initial-scale=1.0">//-->
+<TITLE>The Legend of Nephi:  Young Reader's Edition</TITLE>
+</head>
+<body>
+
+<!-- https://stackoverflow.com/questions/21513596/onclick-and-ontouchstart-simultaneously/27487728 //-->
+<SCRIPT>var  touchAvailable = false;</SCRIPT>
+<div id="full-screen" ontouchstart="touchAvailable=true;  toggleFullScreen();" onclick="if(!touchAvailable) toggleFullScreen();">FULL</div>
+
+
+
+
+<div id="canvas">	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div id="book-zoom"> 
+		
+		<div class="lonyr-book">
+			<div depth="5" class="hard"> <div class="side"></div> </div>
+			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
+			<div class="own-size"></div>
+			<div class="own-size even"></div>
+			<div class="hard fixed back-side p379"> <div class="depth"></div> </div>
+			<div class="hard p380"></div>
+		</div>
+		
+	<TABLE width=100% border=0>
+		<TR>
+			<TD width=10% valign="middle" align="left">
+				<button id="go-backward" ontouchstart="touchAvailable=true;  $('.lonyr-book').turn('previous');" onclick="if(!touchAvailable) $('.lonyr-book').turn('previous');">Previous</button>
+			</TD>
+			<TD valign="top" align="center">
+			<div id="slider-bar" class="turnjs-slider">		
+				<div id="slider"></div>		
+			</div>
+			</TD>
+			<TD width=10% valign="middle" align="right">
+				<button id="go-forward" ontouchstart="touchAvailable=true;  $('.lonyr-book').turn('next');" onclick="if(!touchAvailable) $('.lonyr-book').turn('next');">Next</button>
+			</TD>
+		</TR>
+	</TABLE>
+	</div>
+	
+	
+	
+	
+	
+<!-----------------------------------------------------------------------------//-->
+<div>
+  
+  
+  
+  <style>
+    fieldset {
+      border: 0;
+    }
+    label {
+      display: block;
+      margin: 30px 0 0 0;
+    }
+    .overflow {
+      height: 200px;
+    }
+  </style>
+  
+  
+  <div class="demo">
+ 
+<form action="#">
+ <fieldset>
+ <TABLE width=100% border=0>
+	<TR>
+	
+	<TD width=10% valign="top" align="center">&nbsp;</TD>
+	
+	<TD width=25% valign="top" align="center">
+ 
+    <!--<label for="1Nephi">1 Nephi</label>//-->
+
+	<div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle" style="width:150px;"><span id="ui-id-1234" class="ui-dialog-title">1 Nephi</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close" style="visibility:hidden;"><span class="ui-button-icon ui-icon ui-icon-closethick" style="visibility:hidden;"></span><span class="ui-button-icon-space" style="visibility:hidden;"> </span>Close</button></div>
+    <select name="1Nephi" id="1Nephi" style='position:relative;z-index:91000003'>
+      <option value="1">1 Nephi 1</option>
+      <option value="1">1 Nephi 2</option>
+	  <option value="1">1 Nephi 3</option>
+	  <option value="1">1 Nephi 4</option>
+	  <option value="1">1 Nephi 5</option>
+	  <option value="1">1 Nephi 6</option>
+	  <option value="1">1 Nephi 7</option>
+	  <option value="1">1 Nephi 8</option>
+	  <option value="1">1 Nephi 9</option>
+	  <option value="1">1 Nephi 10</option>
+	  <option value="1">1 Nephi 11</option>
+	  <option value="1">1 Nephi 12</option>
+	  <option value="1">1 Nephi 13</option>
+	  <option value="1">1 Nephi 14</option>
+	  <option value="1">1 Nephi 15</option>
+	  <option value="1">1 Nephi 16</option>
+	  <option value="1">1 Nephi 17</option>
+	  <option value="1">1 Nephi 18</option>
+	  <option value="1">1 Nephi 19</option>
+	  <option value="1">1 Nephi 20</option>
+	  <option value="1">1 Nephi 21</option>
+	  <option value="1">1 Nephi 22</option>
+    </select>
+		</TD>
+		
+		
+		<TD width=30% valign="top" align="center">
+		
+		
+	<div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle" style="width:300px;">
+		<span id="ui-id-14" class="ui-dialog-title">
+		<TABLE width=100%>
+			<TR>
+				<TD width=25% valign="top" align="center">
+					<span id="number-results"></span>
+				</TD>
+				<TD width=50% valign="top" align="center">
+					<input id="search-box" type="text" onfocus="this.select();" style="width: 122px;" value="" />
+				</TD>
+				<TD width=25% valign="top" align="center">
+					<span id="search-go" onclick="searchForString('');">Go!</span>
+				</TD>
+			<TR>
+		</TABLE>
+		</span>
+	</div>
+	
+	<div id="search-wrapper">
+		
+	</div>
+	
+	<!--
+	<span id="ui-id-14" class="ui-dialog-title"><span id="number-results">(124)</span> Search: </span> <input id="search-box" type="text" onselect="this.focus();" style="width: 122px;" value="" /> <span id="search-go">Go!</span> <button type="button" style="display:none;" class="ui-button ui-corner-all ui-widget" title="Go!">Go!</button>  <button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close" style="visibility:hidden;"><span class="ui-button-icon ui-icon ui-icon-closethick" style="visibility:hidden;"></span><span class="ui-button-icon-space" style="visibility:hidden;"> </span>Close</button></div>
+    <select name="searchResults" id="search-results" style='position:relative;z-index:91000003'>
+      
+    </select>
+	//-->
+ <!--
+    <div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle" style="width:300px;"><span id="ui-id-14" class="ui-dialog-title">Introduction</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close" style="visibility:hidden;"><span class="ui-button-icon ui-icon ui-icon-closethick" style="visibility:hidden;"></span><span class="ui-button-icon-space" style="visibility:hidden;"> </span>Close</button></div>
+    <select name="intro" id="intro" style='position:relative;z-index:91000003'>
+      <option value="1">Cover: Front</option>
+      <option value="3">Dedication</option>
+	  <option value="4">Title</option>
+	  <option value="5">A Gift To My Son</option>
+	  <option value="6">Glory to God: Respect to Nephi</option>
+	  <option value="7">Reading Level: 4th Grade</option>
+	  <option value="8">Voices from the Dust</option>
+	  <option value="9">Importance of Language</option>
+	  <option value="10">Life Eternal to Know God</option>
+	  <option value="13">Legend of Nephi: Ministry of Zion</option>
+	  <option value="145">Proof of Yeshua as both Jehovah and Messiah</option>
+	  <option value="13">Nephi John as a nombre de pluma</option>	
+		<option value="13">Cover: Back</option>
+    </select>
+	
+	//-->
+		</TD>
+		
+		
+		
+		
+		
+		
+		<TD width=25% valign="top" align="center">
+ 
+    <!--<label for="2Nephi">2 Nephi</label>//-->
+	<div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle" style="width:150px;"><span id="ui-id-154" class="ui-dialog-title">2 Nephi</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close" style="visibility:hidden;"><span class="ui-button-icon ui-icon ui-icon-closethick" style="visibility:hidden;"></span><span class="ui-button-icon-space" style="visibility:hidden;"> </span>Close</button></div>
+    <select name="2Nephi" id="2Nephi" style='position:relative;z-index:91000003'>
+      <option value="1">2 Nephi 1</option>
+      <option value="1">2 Nephi 2</option>
+	  <option value="1">2 Nephi 3</option>
+	  <option value="1">2 Nephi 4</option>
+	  <option value="1">2 Nephi 5</option>
+	  <option value="1">2 Nephi 6</option>
+	  <option value="1">2 Nephi 7</option>
+	  <option value="1">2 Nephi 8</option>
+	  <option value="1">2 Nephi 9</option>
+	  <option value="1">2 Nephi 10</option>
+	  <option value="1">2 Nephi 11</option>
+	  <option value="1">2 Nephi 12</option>
+	  <option value="1">2 Nephi 13</option>
+	  <option value="1">2 Nephi 14</option>
+	  <option value="1">2 Nephi 15</option>
+	  <option value="1">2 Nephi 16</option>
+	  <option value="1">2 Nephi 17</option>
+	  <option value="1">2 Nephi 18</option>
+	  <option value="1">2 Nephi 19</option>
+	  <option value="1">2 Nephi 20</option>
+	  <option value="1">2 Nephi 21</option>
+	  <option value="1">2 Nephi 22</option>
+	  <option value="1">2 Nephi 23</option>
+	  <option value="1">2 Nephi 24</option>
+	  <option value="1">2 Nephi 25</option>
+	  <option value="1">2 Nephi 26</option>
+	  <option value="1">2 Nephi 27</option>
+	  <option value="1">2 Nephi 28</option>
+	  <option value="1">2 Nephi 29</option>
+	  <option value="1">2 Nephi 30</option>
+	  <option value="1">2 Nephi 31</option>
+	  <option value="1">2 Nephi 32</option>
+	  <option value="1">2 Nephi 33</option>
+    </select>
+		</TD>
+		
+		
+		<TD width=10% valign="top" align="center">&nbsp;</TD>
+		
+		
+	</TR>
+</TABLE>	
+		
+		
+  </fieldset>
+ 
+</form>
+ 
+</div>
+
+</div>
+<!-----------------------------------------------------------------------------//-->	
+	
+	
+</div>
+</div>
+
+<script type="text/javascript">
+
+function loadApp() {
+	
+	var flipbook = $('.lonyr-book');
+	
+	// adding LON
+// -----------------------------------------------------------
+/*
+	$( "#intro" ).selectmenu({width:300, change: function( event, data ) {
+         console.log( data.item.value );
+       }}).selectmenu("menuWidget").css("height","150px");
+	   
+	   */
+	   
+	    
+	   
+	
+	
+	$( "#go-forward" ).button();
+	$( "#go-backward" ).button();
+	
+	$( "#1Nephi" ).selectmenu({width:150, change: function( event, data ) {
+         console.log( data.item.value );
+		 flipbook.turn('page', data.item.value);
+       }}).selectmenu("menuWidget").css("height","122px");
+	
+	$( "#2Nephi" ).selectmenu({width:150, change: function( event, data ) {
+         console.log( data.item.value );
+		 flipbook.turn('page', data.item.value);
+       }}).selectmenu("menuWidget").css("height","122px");
+ 
+// $('select').selectmenu().selectmenu("menuWidget").css("height","200px");
+ 
+
+// -----------------------------------------------------------
+
+
+	// Check if the CSS was already loaded
+	
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+
+	// Mousewheel
+
+	$('#book-zoom').mousewheel(function(event, delta, deltaX, deltaY) {
+
+		var data = $(this).data(),
+			step = 30,
+			flipbook = $('.lonyr-book'),
+			actualPos = $('#slider').slider('value')*step;
+
+		if (typeof(data.scrollX)==='undefined') {
+			data.scrollX = actualPos;
+			data.scrollPage = flipbook.turn('page');
+		}
+
+		data.scrollX = Math.min($( "#slider" ).slider('option', 'max')*step,
+			Math.max(0, data.scrollX + deltaX));
+
+		var actualView = Math.round(data.scrollX/step),
+			page = Math.min(flipbook.turn('pages'), Math.max(1, actualView*2 - 2));
+
+		if ($.inArray(data.scrollPage, flipbook.turn('view', page))==-1) {
+			data.scrollPage = page;
+			flipbook.turn('page', page);
+		}
+
+		if (data.scrollTimer)
+			clearInterval(data.scrollTimer);
+		
+		data.scrollTimer = setTimeout(function(){
+			data.scrollX = undefined;
+			data.scrollPage = undefined;
+			data.scrollTimer = undefined;
+		}, 1000);
+
+	});
+
+	// Slider
+
+	$( "#slider" ).slider({
+		min: 1,
+		max: 100,
+
+		start: function(event, ui) {
+
+			if (!window._thumbPreview) {
+				_thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
+				setPreview(ui.value);
+				_thumbPreview.appendTo($(ui.handle));
+			} else
+				setPreview(ui.value);
+
+			moveBar(false);
+
+		},
+
+		slide: function(event, ui) {
+
+			setPreview(ui.value);
+
+		},
+
+		stop: function() {
+
+			if (window._thumbPreview)
+				_thumbPreview.removeClass('show');
+			
+			$('.lonyr-book').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
+
+		}
+	});
+
+
+	// URIs
+	
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+
+			var page = parts[1];
+
+			if (page!==undefined) {
+				if ($('.lonyr-book').turn('is'))
+					$('.lonyr-book').turn('page', page);
+			}
+
+		},
+		nop: function(path) {
+
+			if ($('.lonyr-book').turn('is'))
+				$('.lonyr-book').turn('page', 1);
+		}
+	});
+
+	// Arrows
+
+	//$(document).keydown(function(e){
+	// https://stackoverflow.com/questions/1160008/which-keycode-for-escape-key-with-jquery
+	$(document).keyup(function(e){
+		// console.log(e);
+		var myE = '.lonyr-book';
+		var previous = 37, next = 39, first = 27, last = 35;
+	// https://keycode.info/
+		switch (e.keyCode) {
+			case first:		// 27 is ESC
+			case 36:		// 36 is home key
+				$(myE).turn('page', 1);
+			break;
+			
+			case last:		// 35 is END
+			// case 13:		// 13 is ENTER, used for search
+				$(myE).turn('page', flipbook.turn('pages'));
+			break;
+			
+			case previous:  // 37 is left arrow
+			case 40:		// down arrow
+			case 8:			// backspace
+
+				$(myE).turn('previous');
+
+			break;
+			case next:		// 39 is right arrow
+			case 38:		// up arrow
+			case 32:		// space bar
+				
+				$(myE).turn('next');
+
+			break;
+		}
+
+	});
+
+
+
+	// Flipbook
+
+	flipbook.bind(($.isTouch) ? 'touchend' : 'click', zoomHandle);
+
+	flipbook.turn({
+		elevation: 50,
+		acceleration: !isChrome(),
+		autoCenter: true,
+		gradients: true,
+		duration: 1000,
+		pages: 380,  // needs to be odd ?
+		when: {
+			turning: function(e, page, view) {
+				var pageLimit = 3;
+				var book = $(this),
+					currentPage = book.turn('page'),
+					pages = book.turn('pages');
+
+				
+				if (currentPage>pageLimit && currentPage<pages-pageLimit) {
+				
+					if (page==1) {
+						book.turn('page', 2).turn('stop').turn('page', page);
+						e.preventDefault();
+						return;
+					} else if (page==pages) {
+						book.turn('page', pages-1).turn('stop').turn('page', page);
+						e.preventDefault();
+						return;
+					}
+				} else if (page>pageLimit && page<pages-pageLimit) {
+					if (currentPage==1) {
+						book.turn('page', 2).turn('stop').turn('page', page);
+						e.preventDefault();
+						return;
+					} else if (currentPage==pages) {
+						book.turn('page', pages-1).turn('stop').turn('page', page);
+						e.preventDefault();
+						return;
+					}
+				}
+				
+
+				updateDepth(book, page);
+				
+				pstr = '.lonyr-book .p' + (pages-1);
+				
+				if (page>=(pageLimit-1))
+					$('.lonyr-book .p2').addClass('fixed');
+				else
+					$('.lonyr-book .p2').removeClass('fixed');
+
+				if (page<book.turn('pages'))
+					$(pstr).addClass('fixed');
+				else
+					$(pstr).removeClass('fixed');
+
+				Hash.go('page/'+page).update();
+					
+			},
+
+			turned: function(e, page, view) {
+				var pageLimit = 2;
+				var book = $(this);
+
+				if (page==(pageLimit-1) || page==pageLimit) {
+					book.turn('peel', 'br');
+				}
+
+				updateDepth(book);
+				
+				$('#slider').slider('value', getViewNumber(book, page));
+
+				book.turn('center');
+
+			},
+
+			start: function(e, pageObj) {
+		
+				moveBar(true);
+
+			},
+
+			end: function(e, pageObj) {
+			
+				var book = $(this);
+
+				updateDepth(book);
+
+				setTimeout(function() {
+					
+					$('#slider').slider('value', getViewNumber(book));
+
+				}, 1);
+
+				moveBar(false);
+
+			},
+
+			missing: function (e, pages) {
+
+				for (var i = 0; i < pages.length; i++) {
+					addPage(pages[i], $(this));
+				}
+
+			}
+		}
+	});
+
+
+	$('#slider').slider('option', 'max', numberOfViews(flipbook));
+
+	flipbook.addClass('animated');
+
+	// Show canvas
+
+	$('#canvas').css({visibility: ''});
+	
+loadSearchable();	
+}
+
+// Hide canvas
+
+$('#canvas').css({visibility: 'hidden'});
+
+// Load turn.js
+
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['./../../../libs/turnjs4/lib/turn.min.js'],
+	nope: ['./../../../libs/turnjs4/lib/turn.html4.min.js', 'css/jquery.ui.html4.css', 'css/young-reader-html4.css'],
+	both: ['js/young-reader.js', 'css/jquery.ui.css', 'css/young-reader.css'],
+	complete: loadApp
+});
+
+</script>
+
+
+<div id="search-content" style="display: none;"></div>
+<!--
+<BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR />
+<BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR />
+<BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR />
+<BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR />
+<BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR />
+<BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR />
+<BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR /><BR />
+//-->
+</body>
+</html>

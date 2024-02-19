@@ -1,0 +1,1289 @@
+/* Legend of Nephi: Young Reader */
+
+/*
+@font-face {
+  font-family: 'Stempel-Garamond-W01-Roman';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/Stempel-Garamond-W01-Roman.woff') format('woff');
+}
+*/
+
+body, ul, table, form{
+	margin:10;
+	padding:10;
+	/* overflow:hidden; */
+	background-color: #000;
+}
+
+.animated{
+	-webkit-transition:margin-left 0.2s ease-in-out;
+	-moz-transition:margin-left 0.2s ease-in-out;
+	-o-transition:margin-left 0.2s ease-in-out;
+	-ms-transition:margin-left 0.2s ease-in-out;
+	transition:margin-left 0.2s ease-in-out;
+}
+
+
+
+#canvas{
+	width: 960px;
+	height: 600px;
+	margin: 22px auto;
+}
+
+#book-zoom{
+	-webkit-transition: -webkit-transform 1s;
+	-moz-transition: -moz-transform 1s;
+	-ms-transition: -ms-transform 1s;
+	-o-transition: -o-transform 1s;
+	transition: transform 1s;
+}
+
+.lonyr-book{
+	width:960px;
+	height:600px;
+}
+
+.lonyr-book h1{
+	font-family: "Stempel-Garamond-W01-Roman";
+	font-size: 38px;
+	font-weight: lighter;
+	margin: 20px 0;
+	color: #333;
+	-webkit-text-fill-color: #333;
+	-webkit-text-stroke-color: white;
+	-webkit-text-stroke-width: 0.005em;
+}
+
+.lonyr-book h2{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:#444;
+    font-size:16px;
+	letter-spacing:2px;
+	font-weight: 400;
+}
+
+.lonyr-book .book-content{
+	font-family: "Stempel-Garamond-W01-Roman";
+	font-size:16px;
+	margin:70px 40px;
+}
+
+.lonyr-book blockquote{
+	color:#586078;
+	margin:10px 0;
+	font-style:italic;
+}
+
+.lonyr-book blockquote:before{
+	content: "\201C";
+	color:#333D53;
+	font-size:20px;
+}
+
+.lonyr-book blockquote:after{
+	content: "\201D";
+	color:#333D53;
+	font-size:20px;
+}
+
+.lonyr-book cite{
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size:13px;
+	font-weight:200;
+	font-style:normal;
+	color:#666;
+}
+
+.lonyr-book .book-content .center-pic{
+	margin:0;
+	text-indent:0;
+	text-align:center;
+}
+
+.lonyr-book .zoom-this:hover{
+	opacity:0.9;
+	cursor:pointer;
+}
+
+.lonyr-book .book-content p{
+	text-indent: 18px;
+	margin: 20px 0;
+	line-height: 22px;
+}
+
+.lonyr-book .left-pic{
+	float:left;
+	margin-top:15px;
+	margin-right:15px;
+	margin-bottom:15px;
+}
+
+.animated{
+	-webkit-transition:margin-left 0.2s ease-in-out;
+	-moz-transition:margin-left 0.2s ease-in-out;
+	-o-transition:margin-left 0.2s ease-in-out;
+	-ms-transition:margin-left 0.2s ease-in-out;
+	transition:margin-left 0.2s ease-in-out;
+}
+
+.lonyr-book .shadow{
+	-webkit-transition: -webkit-box-shadow 0.5s;
+	-moz-transition: -moz-box-shadow 0.5s;
+	-o-transition: -webkit-box-shadow 0.5s;
+	-ms-transition: -ms-box-shadow 0.5s;
+
+	-webkit-box-shadow:0 0 10px #999;
+	-moz-box-shadow:0 0 10px #999;
+	-ms-box-shadow:0 0 10px #999;
+	-o-box-shadow:0 0 10px #999;
+	box-shadow:0 0 10px #999;
+}
+
+.lonyr-book .page{
+	-webkit-box-shadow:0 0 20px rgba(0,0,0,0.2);
+	-moz-box-shadow:0 0 20px rgba(0,0,0,0.2);
+	-ms-box-shadow:0 0 20px rgba(0,0,0,0.2);
+	-o-box-shadow:0 0 20px rgba(0,0,0,0.2);
+	box-shadow:0 0 20px rgba(0,0,0,0.2);
+}
+
+.zoom-pic{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.2);
+	z-index:999;
+}
+
+.zoom-pic img{
+	-webkit-box-shadow:0 0 20px #999;
+	-moz-box-shadow:0 0 20px #999;
+	-o-box-shadow:0 0 20px #999;
+	-ms-box-shadow:0 0 20px #999;
+	box-shadow:0 0 20px #999;
+}
+ 
+.lonyr-book .p1,
+.lonyr-book .p2,
+.lonyr-book .p3, 
+.lonyr-book .p379, 
+.lonyr-book .p380{
+	background-color:white;
+	background-image:url(../pics/book-covers.png) !important;
+}
+
+.lonyr-book .p379{
+	background-position:-960px 0 !important;
+}
+
+.lonyr-book .p380{
+	background-position:-1440px 0 !important;
+}
+
+
+.lonyr-book .p1{
+	background-position:0 0;
+}
+
+.lonyr-book .p1 .side{
+	width:5px;
+	height:600px;
+	position:absolute;
+	top:0;
+	left:475px;
+
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #bbb), color-stop(0.5,  #ddd), color-stop(1,  #bbb));
+	background-image:-webkit-linear-gradient(left, #bbb, #ddd, #bbb);
+	background-image:-moz-linear-gradient(left, #bbb, #ddd, #bbb);
+	background-image:-ms-linear-gradient(left, #bbb, #ddd, #bbb);
+	background-image:-o-linear-gradient(left, #bbb, #ddd, #bbb);
+	background-image:linear-gradient(left, #bbb, #ddd, #bbb);
+	
+	-webkit-transform:rotateY(-90deg);
+	-moz-transform:rotateY(-90deg);
+	-o-transform:rotateY(-90deg);
+	-ms-transform:rotateY(-90deg);
+	transform:rotateY(-90deg);
+
+	-webkit-transform-origin:top right;
+	-moz-transform-origin:top right;
+	-o-transform-origin:top right;
+	-ms-transform-origin:top right;
+	transform-origin:top right;
+	z-index:100000;
+
+}
+
+.lonyr-book-transform div[page="1"] > div, .lonyr-book-transform div[page="2"] > div{
+	overflow:visible !important;
+}
+
+.lonyr-book .depth{
+	background-image:url(../pics/pages-depth.png);
+	position:absolute;
+	top:7px;
+	width:16px;
+	height:590px;
+}
+
+.lonyr-book .front-side .depth{
+	left:4px;
+	background-position:0 0;
+}
+
+.lonyr-book .back-side .depth{
+	right:4px;
+	background-position:right 0;
+}
+
+
+.lonyr-book .p2{
+	background-position:-480px 0 !important;
+}
+
+.lonyr-book .p3{
+	background-position:-1920px 0 !important;
+}
+
+
+
+.lonyr-book .hard{
+	width:480px;
+	height:600px;
+	background-color:white;
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	-ms-box-shadow:none;
+	box-shadow:none;
+}
+
+.lonyr-book .page-wrapper{
+	-webkit-perspective:2000px;
+	-moz-perspective: 2000px;
+	-ms-perspective: 2000px;
+	perspective: 2000px;
+}
+
+.lonyr-book .own-size{
+	width:460px;
+	height:582px;
+	background-color:white;
+	overflow:hidden;
+}
+
+.lonyr-book .even{
+	background:-webkit-gradient(linear, left top, right top, color-stop(0.95, #fff), color-stop(1, #dadada));
+	background-image:-webkit-linear-gradient(left, #fff 95%, #dadada 100%);
+	background-image:-moz-linear-gradient(left, #fff 95%, #dadada 100%);
+	background-image:-ms-linear-gradient(left, #fff 95%, #dadada 100%);
+	background-image:-o-linear-gradient(left, #fff 95%, #dadada 100%);
+	background-image:linear-gradient(left, #fff 95%, #dadada 100%);
+}
+
+.lonyr-book .odd{
+	background:-webkit-gradient(linear, right top, left top, color-stop(0.95, #fff), color-stop(1, #cacaca));
+	background-image:-webkit-linear-gradient(right, #fff 95%, #cacaca 100%);
+	background-image:-moz-linear-gradient(right, #fff 95%, #cacaca 100%);
+	background-image:-ms-linear-gradient(right, #fff 95%, #cacaca 100%);
+	background-image:-o-linear-gradient(right, #fff 95%, #cacaca 100%);
+	background-image:linear-gradient(right, #fff 95%, #cacaca 100%);
+}
+
+.lonyr-book .loader{
+	background-image:url(../pics/loader.gif);
+	width:22px;
+	height:22px;
+	position:absolute;
+	top:280px;
+	left:219px;
+}
+
+.lonyr-book .page-number{
+	color:#999;
+	width:100%;
+	bottom:25px;
+	position:absolute;
+	display:block;
+	text-align: center;
+	line-height:30px;
+	font-size:11px;
+}
+
+.lonyr-book .table-contents{
+	font-size:16px;
+	width:300px;
+	margin:80px auto;
+	color:#ccc;
+}
+
+.lonyr-book .table-contents li{
+	list-style:none;
+	line-height:25px;
+}
+
+.lonyr-book .table-contents span{
+	float:right;
+}
+
+.lonyr-book .table-contents a{
+	float:left;
+	width:100%;
+	clear:both;
+	text-decoration:none;
+	color:#333;
+	margin:2px 0;
+	padding:0 10px;
+}
+
+.lonyr-book .table-contents a:hover{
+	background:#CAD1EE;
+	float:left;
+	width:100%;
+	clear:both;
+	text-decoration:none;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-o-border-radius:10px;
+	-ms-border-radius:10px;
+	border-radius:10px;
+}
+
+.lonyr-book .book-content .capital,
+.lonyr-book .book-content .no-indent{
+	text-indent: 0;
+}
+
+.lonyr-book .capital:first-letter {
+    display:block;
+    float:left;
+    font-size: 300%;
+    line-height: 70%;
+	margin-right: 6px;
+	margin-top: 7px;
+	margin-left:18px;
+}
+
+.ie8 .lonyr-book .even,
+.ie9 .lonyr-book .even{
+	background-image:url(../pics/gradient-page-left.jpg);
+	background-position:right top;
+	background-repeat:repeat-y;
+}
+
+.ie8 .lonyr-book .odd,
+.ie9 .lonyr-book .odd{
+	background-image:url(../pics/gradient-page-right.jpg);
+	background-position:left top;
+	background-repeat:repeat-y;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#full-screen {
+	position: absolute;
+	top:10px;
+	left:10px;
+	color: white;
+	
+}
+
+
+
+.highlight {
+	color: #CC0000;
+	border: 2px solid #CC0000;
+	background-color: yellow;
+	padding: 2px;	
+}
+
+.wicked {
+	text-decoration: line-through !important;	
+	}
+	
+	
+.emph {
+	font-weight: bold;
+	font-style: italic;
+	}
+
+.span	{
+	font-weight: bold;
+	font-style: italic;
+	}
+	
+
+
+.lon-page-header {
+	position: absolute;
+	text-align: center;
+	top: 6px;
+	font-weight: bold;
+	font-size: 9px;
+	color: #999;
+	}
+	
+.odd .lon-page-header {	
+	/* border: 2px solid red; */		
+	right: 6px;
+	}
+	
+.even .lon-page-header {	
+	/* border: 2px solid blue; */		
+	left: 6px;
+	/* display: none; */
+	}
+	
+	
+.lon-page-number {
+	position: absolute;
+	text-align: center;
+	bottom: 6px;
+	/* width: 22px; */
+	font-weight: bold;
+	font-size: 9px;
+	color: #999;
+	}
+	
+.odd .lon-page-number {	
+	/* border: 2px solid red; */		
+	right: 6px;
+	}
+	
+.even .lon-page-number {	
+	/* border: 2px solid blue; */		
+	left: 6px;
+	}
+
+
+.lon-content {
+		margin-top: 22px !important;
+		margin-bottom: 22px !important;
+		margin-right: 22px !important;
+		margin-left: 22px !important;
+		font-size: 15px; 
+		
+	font-family: monospace;
+	}
+
+.lon-chapter {
+	font-family: monospace !important;
+	text-decoration: underline !important;
+	font-size: 22px !important;
+	color: black !important;
+	}
+
+.lon-verse-number {
+	font-weight: bold;
+	font-size: 122%;
+	padding: 3px;
+	vertical-align: super;
+	}
+	
+.lon-verse {
+	line-height: 1.5em;
+	}
+.lon-verse::after {
+	white-space: pre;
+	word-wrap: break-word;
+	content: " \A ";  /*  \n" - then I remembered newline is 0x0A  */
+	
+	}
+
+	
+
+
+ 
+
+.quote	{
+	
+	
+	/* 
+	font-weight: bold;
+	font-size: 87%;
+	font-style: italic;
+	background-color: #f0f0f0;
+	color: #F37272;
+	font-size: 87%;
+	*/
+	display: inline;
+    background: #f0f0f0;
+    color: #F37272;
+    padding: 3px;
+    word-wrap: break-word;
+	position: relative;
+    left: 3px;
+    padding-left: 0;
+    box-shadow: 3px 0 0 #FFFFFF, -3px 0 0 #FFFFFF;
+	}
+	
+
+/*
+%----------------------------------------------------------------------------------------
+%	HEAVEN
+%----------------------------------------------------------------------------------------	
+*/	     
+
+.Father::before {
+	content: 'FATHER';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #660066;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+
+	
+.Father {
+	background-color: #F0F0F0;  	/* {God.white}{RGB}{240,240,240}  % F0F0F0  */
+	color:  #660066;             	/* {God.purple}{RGB}{102,0,102}  % 660066 */
+	}
+	
+
+.God::before {
+	content: 'GOD';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #660066;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+
+	
+.God {
+	background-color: #F0F0F0;  	/* {God.white}{RGB}{240,240,240}  % F0F0F0  */
+	color:  #660066;             	/* {God.purple}{RGB}{102,0,102}  % 660066 */
+	}
+
+
+.Lamb::before {
+	content: 'LAMB';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #CC0000;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+
+	
+.Lamb {
+	background-color: #FDFDFD;  	/* {white.ish}{RGB}{253,253,253} % FDFDFD */
+	color:  #CC0000;             	/* {Ute.red}{RGB}{204,0,0} % CC0000 */
+	}
+
+
+.Son::before {
+	content: 'SON';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #CC0000;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+
+	
+.Son {
+	background-color: #FDFDFD;  	/* {white.ish}{RGB}{253,253,253} % FDFDFD */
+	color:  #CC0000;             	/* {Ute.red}{RGB}{204,0,0} % CC0000 */
+	}
+
+	
+.Angel::before {
+	content: 'Angel';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #0F55B9;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+
+	
+.Angel {
+	background-color: #F0F0F0;  	/* {God.white}{RGB}{240,240,240}  % F0F0F0 */
+	color:  #0F55B9;             	/* {Angel.sapphire}{RGB}{15,85,185} % 0F55B9*/
+	}
+	
+
+.Spirit::before {
+	content: 'Spirit';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #0F55B9;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Spirit {
+	background-color: #F0F0F0;  	/* {God.white}{RGB}{240,240,240}  % F0F0F0 */
+	color:  #0F55B9;             	/* {Spirit.sapphire}{RGB}{15,85,185} % 0F55B9*/
+	}
+	
+	
+	
+.Seraph::before {
+	content: 'Seraph';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #0F55B9;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Seraph {
+	background-color: #F0F0F0;  	/* {God.white}{RGB}{240,240,240}  % F0F0F0 */
+	color:  #0F55B9;             	/* {Seraph.sapphire}{RGB}{15,85,185} % 0F55B9*/
+	}
+		
+
+
+/*
+%----------------------------------------------------------------------------------------
+%	FAMILY
+%----------------------------------------------------------------------------------------	
+*/	
+	
+
+.Lehi::before {
+	content: 'Lehi';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #CC0000;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Lehi {
+	background-color: #E2E5DF;  	/* {white.gray}{RGB}{226,229,223} % E2E5DF */
+	color:  #CC0000;             	/* {Ute.red}{RGB}{204,0,0} % CC0000     */
+	}
+	
+	
+	
+.Sariah::before {
+	content: 'Sariah';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #CC0000;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Sariah {
+	background-color: #FF9B9B;  	/* {white.pink}{RGB}{255,155,155}	% FF9B9B */
+	color:  #CC0000;             	/* {Ute.red}{RGB}{204,0,0} % CC0000     */
+	}
+	
+
+.Laman::before {
+	content: 'Laman';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #0C1824;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Laman {
+	background-color: #A8B4B4;  	/* {Steelers.silver}{RGB}{168,180,180} % A8B4B4 */
+	color:  #0C1824;             	/* {Steelers.black}{RGB}{12,24,36} % 0C1824    */
+	}
+	
+
+.Brothers::before {
+	content: 'Brothers';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #0C1824;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Brothers {
+	background-color: #A8B4B4;  	/* {Steelers.silver}{RGB}{168,180,180} % A8B4B4 */
+	color:  #0C1824;             	/* {Steelers.black}{RGB}{12,24,36} % 0C1824    */
+	}
+	
+	
+
+.Nephi::before {
+	content: 'Nephi';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #003084;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Nephi {
+	background-color: #F0F0F0;  	/* {Nephi.white}{RGB}{222,222,222}  % F0F0F0 */
+	color:  #003084;             	/* {Steelers.blue}{RGB}{0,48,132} % 003084   */
+	}
+	
+		
+	
+
+.Jacob::before {
+	content: 'Jacob';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #981E32;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Jacob {
+	background-color: #B9B95F;  	/* {olive.light}{RGB}{185,185,95} % B9B95F */
+	color:  #981E32;             	/* {WSU.crimson}{RGB}{152,30,50} % 981E32   */
+	}
+	
+		
+
+.Daughters::before {
+	content: 'Daughters';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #CC0000;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Daughters {
+	background-color: #FF9B9B;  	/* {white.pink}{RGB}{255,155,155}	% FF9B9B */
+	color:  #CC0000;             	/* {Ute.red}{RGB}{204,0,0} % CC0000     */
+	}
+	
+	
+/*
+%----------------------------------------------------------------------------------------
+%	PROPHETIC
+%----------------------------------------------------------------------------------------	
+*/	
+
+.JohnB::before {
+	content: 'Baptist';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #CC0000;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.JohnB {
+	background-color: #9BFFFF;  	/* {white.blue}{RGB}{155,255,255} % 9BFFFF */
+	color:  #CC0000;             	/* {Ute.red}{RGB}{204,0,0} % CC0000    */
+	}
+		
+
+.Isaiah::before {
+	content: 'Isaiah';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #CC0000;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Isaiah {
+	background-color: #B9B95F;  	/* {olive.light}{RGB}{185,185,95} % B9B95F */
+	color:  #CC0000;             	/* {Ute.red}{RGB}{204,0,0} % CC0000    */
+	}
+	
+	
+.Zenos::before {
+	content: 'Zenos';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #55692D;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Zenos {
+	background-color: #B9B95F;  	/* {olive.light}{RGB}{185,185,95} % B9B95F */
+	color:  #55692D;             	/* {olive.dark}{RGB}{85,105,45} % 55692D    */
+	}
+
+
+.Prophet::before {
+	content: 'Prophet';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #000000;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Prophet {
+	background-color: #B9B95F;  	/* {olive.light}{RGB}{185,185,95} % B9B95F */
+	color:  #000000;             	/* {black}{RGB}{0,0,0} % 000000  */
+	}
+	
+	
+.Joseph::before {
+	content: 'Joseph';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #981E32;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Joseph {
+	background-color: #B9B95F;  	/* {olive.light}{RGB}{185,185,95} % B9B95F */
+	color:  #981E32;             	/* {WSU.crimson}{RGB}{152,30,50} % 981E32  */
+	}
+		
+.Moses::before {
+	content: 'Moses';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #981E32;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Moses {
+	background-color: #B9B95F;  	/* {olive.light}{RGB}{185,185,95} % B9B95F */
+	color:  #981E32;             	/* {WSU.crimson}{RGB}{152,30,50} % 981E32   */
+	}
+
+.UnLearnedMan::before {
+	content: 'UnLearnedMan';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #0F55B9;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.UnLearnedMan {
+	background-color: #9BFFFF;  	/* {white.blue}{RGB}{155,255,255} % 9BFFFF */
+	color:  #0F55B9;             	/* {Angel.sapphire}{RGB}{15,85,185} % 0F55B9   */
+	}
+		
+/*
+%----------------------------------------------------------------------------------------
+%	OTHERS
+%----------------------------------------------------------------------------------------	
+*/		
+
+
+.Kings::before {
+	content: 'Kings';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #A6A6A6;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Kings {
+	background-color: #B9B95F;  	/* {olive.light}{RGB}{185,185,95} % B9B95F */
+	color:  #A6A6A6;             	/* {WSU.gray}{RGB}{166,166,166} % A6A6A6  */
+	}
+
+
+.Zion::before {
+	content: 'Zion';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #55692D;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Zion {
+	background-color: #B9B95F;  	/* {olive.light}{RGB}{185,185,95} % B9B95F */
+	color:  #55692D;             	/* {olive.dark}{RGB}{85,105,45} % 55692D    */
+	}
+
+
+.Women::before {
+	content: 'Women';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #0C1824;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Women {
+	background-color: #FF9B9B;  	/* {white.pink}{RGB}{255,155,155}	% FF9B9B */
+	color:  #0C1824;             	/* {Steelers.black}{RGB}{12,24,36} % 0C1824    */
+	}
+
+
+.Children::before {
+	content: 'Children';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #55692D;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Children {
+	background-color: #B9B95F;  	/* {olive.light}{RGB}{185,185,95} % B9B95F */
+	color:  #55692D;             	/* {olive.dark}{RGB}{85,105,45} % 55692D    */
+	}
+
+
+.People::before {
+	content: 'People';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #55692D;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.People {
+	background-color: #B9B95F;  	/* {olive.light}{RGB}{185,185,95} % B9B95F */
+	color:  #55692D;             	/* {olive.dark}{RGB}{85,105,45} % 55692D    */
+	}
+
+
+
+.Neighbor::before {
+	content: 'Neighbor';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #55692D;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Neighbor {
+	background-color: #B9B95F;  	/* {olive.light}{RGB}{185,185,95} % B9B95F */
+	color:  #55692D;             	/* {olive.dark}{RGB}{85,105,45} % 55692D    */
+	}
+
+
+.News::before {
+	content: 'News';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #55692D;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.News {
+	background-color: #B9B95F;  	/* {olive.light}{RGB}{185,185,95} % B9B95F */
+	color:  #55692D;             	/* {olive.dark}{RGB}{85,105,45} % 55692D    */
+	}
+
+
+
+.Someone::before {
+	content: 'Someone';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #55692D;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Someone {
+	background-color: #B9B95F;  	/* {olive.light}{RGB}{185,185,95} % B9B95F */
+	color:  #55692D;             	/* {olive.dark}{RGB}{85,105,45} % 55692D    */
+	}
+
+
+
+.Some::before {
+	content: 'Some';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #981E32;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Some {
+	background-color: #A6A6A6;  	/* {WSU.gray}{RGB}{166,166,166} % A6A6A6 */
+	color:  #981E32;             	/* {WSU.crimson}{RGB}{152,30,50} % 981E32    */
+	}
+
+
+.Courier::before {
+	content: 'Courier';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #55692D;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Courier {
+	background-color: #B9B95F;  	/* {olive.light}{RGB}{185,185,95} % B9B95F */
+	color:  #55692D;             	/* {olive.dark}{RGB}{85,105,45} % 55692D    */
+	}
+
+
+
+.LearnedMan::before {
+	content: 'Learned';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #981E32;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.LearnedMan {
+	background-color: #A6A6A6;  	/* {WSU.gray}{RGB}{166,166,166} % A6A6A6 */
+	color:  #981E32;             	/* {WSU.crimson}{RGB}{152,30,50} % 981E32    */
+	}
+
+
+.Syria::before {
+	content: 'Syria';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #981E32;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Syria {
+	background-color: #A6A6A6;  	/* {WSU.gray}{RGB}{166,166,166} % A6A6A6 */
+	color:  #981E32;             	/* {WSU.crimson}{RGB}{152,30,50} % 981E32    */
+	}
+
+.Ahaz::before {
+	content: 'Ahaz';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #981E32;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Ahaz {
+	background-color: #A6A6A6;  	/* {WSU.gray}{RGB}{166,166,166} % A6A6A6 */
+	color:  #981E32;             	/* {WSU.crimson}{RGB}{152,30,50} % 981E32    */
+	}
+
+
+
+.Ephraim::before {
+	content: 'Ephraim';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #981E32;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Ephraim {
+	background-color: #A6A6A6;  	/* {WSU.gray}{RGB}{166,166,166} % A6A6A6 */
+	color:  #981E32;             	/* {WSU.crimson}{RGB}{152,30,50} % 981E32    */
+	}
+	
+	
+	
+	
+.Assyria::before {
+	content: 'Assyria';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #981E32;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Assyria {
+	background-color: #A6A6A6;  	/* {WSU.gray}{RGB}{166,166,166} % A6A6A6 */
+	color:  #981E32;             	/* {WSU.crimson}{RGB}{152,30,50} % 981E32    */
+	}
+	
+		
+.Assyria::before {
+	content: 'Assyrian King';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #981E32;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.Assyria {
+	background-color: #A6A6A6;  	/* {WSU.gray}{RGB}{166,166,166} % A6A6A6 */
+	color:  #981E32;             	/* {WSU.crimson}{RGB}{152,30,50} % 981E32    */
+	}
+		
+	
+	
+	
+.FallenKings::before {
+	content: 'Fallen Kings';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #981E32;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.FallenKings {
+	background-color: #A6A6A6;  	/* {WSU.gray}{RGB}{166,166,166} % A6A6A6 */
+	color:  #981E32;             	/* {WSU.crimson}{RGB}{152,30,50} % 981E32    */
+	}	
+
+
+
+.FallenPeople::before {
+	content: 'The Deceived';
+	text-decoration: underline;
+	vertical-align: super; /* top */
+	color:  #981E32;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.FallenPeople {
+	background-color: #A6A6A6;  	/* {WSU.gray}{RGB}{166,166,166} % A6A6A6 */
+	color:  #981E32;             	/* {WSU.crimson}{RGB}{152,30,50} % 981E32    */
+	}	
+	
+
+.wickedone::before {
+	content: 'wicked one';
+	text-decoration: line-through;
+	vertical-align: super; /* top */
+	color:  #981E32;
+	font-size: 66%;
+	padding-right:3px;
+	padding-left:3px;
+}
+ 
+	
+.wickedone {
+	background-color: #A6A6A6;  	/* {WSU.gray}{RGB}{166,166,166} % A6A6A6 */
+	color:  #981E32;             	/* {WSU.crimson}{RGB}{152,30,50} % 981E32    */
+	}	
+	
+
+	
+	
