@@ -1,0 +1,6 @@
+#AddType application/x-httpd-php .html .htm .php
+#AddType application/x-httpd-php5-3 .html .htm .php .php5
+# http://stackoverflow.com/questions/32680650/godaddy-host-html-parse-php-wont-work
+RewriteEngine on
+RewriteBase /
+RewriteRule ^(.*)\.html$ /numerology/$1.php [nc]
